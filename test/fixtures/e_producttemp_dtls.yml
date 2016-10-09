@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  price: 1
+  quantity: 1
+  user_name: MyString
+  cart_id: 
+  offer_id: 1
+  current_date: 2016-10-06
+
+two:
+  product_id: 1
+  price: 1
+  quantity: 1
+  user_name: MyString
+  cart_id: 
+  offer_id: 1
+  current_date: 2016-10-06

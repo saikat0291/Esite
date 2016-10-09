@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cat:</strong>
+  <%= @admin_product.cat_id %>
+</p>
+
+<p>
+  <strong>Subcat:</strong>
+  <%= @admin_product.subcat_id %>
+</p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @admin_product.product_name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @admin_product.price %>
+</p>
+
+<p>
+  <strong>Product image:</strong>
+  <%= @admin_product.product_image %>
+</p>
+
+<p>
+  <strong>Product desc:</strong>
+  <%= @admin_product.product_desc %>
+</p>
+
+<%= link_to 'Edit', edit_admin_product_path(@admin_product) %> |
+<%= link_to 'Back', admin_products_path %>

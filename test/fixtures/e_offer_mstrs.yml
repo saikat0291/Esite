@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  offer: 1
+  upto: 2016-10-06
+  reason: MyString
+
+two:
+  offer: 1
+  upto: 2016-10-06
+  reason: MyString

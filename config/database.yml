@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: esite
+  host: localhost
+  username: postgres
+  password: "postgres"  #Put your password here
+
+production:
+  adapter: postgresql
+  database: esite
+  encoding: utf8
+  min_messages: warning
+  pool: 5
+  timeout: 5000

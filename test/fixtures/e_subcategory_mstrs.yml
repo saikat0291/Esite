@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cat_id: 1
+  subcategory_desc: MyString
+  is_active: 1
+
+two:
+  cat_id: 1
+  subcategory_desc: MyString
+  is_active: 1

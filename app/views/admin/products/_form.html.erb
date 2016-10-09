@@ -1,0 +1,43 @@
+<%= form_for(@admin_product) do |f| %>
+  <% if @admin_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_product.errors.count, "error") %> prohibited this admin_product from being saved:</h2>
+
+      <ul>
+      <% @admin_product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cat_id %><br>
+     <%= f.collection_select :cat_id, @ecategorymst, :id, :category_desc, :prompt => "Select a category" %>
+  <!--   <%= f.number_field :cat_id %> -->
+  </div>
+  <div class="field">
+    <%= f.label :subcat_id %><br>
+    <%= f.collection_select :subcat_id, @esubcategorymstr, :id, :subcategory_desc, :prompt => "Select a subcategory" %>
+   <!-- <%= f.number_field :subcat_id %>-->
+  </div>
+  <div class="field">
+    <%= f.label :product_name %><br>
+    <%= f.text_field :product_name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :product_image %><br>
+    <%= f.text_field :product_image %>
+  </div>
+  <div class="field">
+    <%= f.label :product_desc %><br>
+    <%= f.text_field :product_desc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
