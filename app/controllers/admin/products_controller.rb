@@ -5,7 +5,13 @@ class Admin::ProductsController < ApplicationController
   # GET /admin/products
   # GET /admin/products.json
   def index
-    @admin_products = Admin::Product.all
+    @currentuserId=current_user.id
+    if @currentuserId==1 then
+       @admin_products = Admin::Product.all
+    else
+      redirect_to "/home"
+    end
+   
   end
 
   # GET /admin/products/1

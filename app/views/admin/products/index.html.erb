@@ -1,7 +1,44 @@
-<p id="notice"><%= notice %></p>
-
 <h1 class="text-center">Listing Admin Products</h1>
-
+<div class="header-middle"><!--header-middle-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="logo pull-left">
+            </div>
+            <div class="btn-group pull-right">
+              <div class="btn-group">
+              </div>
+              <div class="btn-group">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="shop-menu pull-right">
+              <ul class="nav navbar-nav">
+                <li>
+                  <%= link_to  edit_user_registration_path do %>
+                  <i class="fa fa-user"></i> Account
+                  <% end %>
+                </li>
+                  
+                <li>
+                <% if user_signed_in? %>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-lock"></i> Log Out
+                <% end %> 
+                <% else %>
+                <%= link_to new_user_session_path do %>
+                <i class="fa fa-lock"></i> Login
+                <% end %>
+                <% end %> 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header-middle-->
+<p id="notice"><%= notice %></p>
 <table>
   <thead>
     <tr>
@@ -31,7 +68,5 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Product', new_admin_product_path %>
