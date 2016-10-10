@@ -1,4 +1,45 @@
-<%= form_for(@admin_product) do |f| %>
+<div class="header-middle"><!--header-middle-->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="logo pull-left">
+            </div>
+            <div class="btn-group pull-right">
+              <div class="btn-group">
+              </div>
+              <div class="btn-group">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="shop-menu pull-right">
+              <ul class="nav navbar-nav">
+                <li>
+                  <%= link_to  edit_user_registration_path do %>
+                  <i class="fa fa-user"></i> Account
+                  <% end %>
+                </li>
+                  
+                <li>
+                <% if user_signed_in? %>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-lock"></i> Log Out
+                <% end %> 
+                <% else %>
+                <%= link_to new_user_session_path do %>
+                <i class="fa fa-lock"></i> Login
+                <% end %>
+                <% end %> 
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--/header-middle-->
+    <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@admin_product) do |f| %>
   <% if @admin_product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admin_product.errors.count, "error") %> prohibited this admin_product from being saved:</h2>
@@ -13,31 +54,36 @@
 
   <div class="field">
     <%= f.label :cat_id %><br>
-     <%= f.collection_select :cat_id, @ecategorymst, :id, :category_desc, :prompt => "Select a category" %>
+     <%= f.collection_select :cat_id, @ecategorymst, :id, :category_desc, :prompt => "Select a category" %> 
+    <!--  <% @category_id%>-->
   <!--   <%= f.number_field :cat_id %> -->
   </div>
   <div class="field">
     <%= f.label :subcat_id %><br>
+    
     <%= f.collection_select :subcat_id, @esubcategorymstr, :id, :subcategory_desc, :prompt => "Select a subcategory" %>
    <!-- <%= f.number_field :subcat_id %>-->
   </div>
   <div class="field">
     <%= f.label :product_name %><br>
-    <%= f.text_field :product_name %>
+    <%= f.text_field :product_name, class: "form-control"  %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, class: "form-control"  %>
   </div>
   <div class="field">
     <%= f.label :product_image %><br>
-    <%= f.text_field :product_image %>
+    <%= f.text_field :product_image, class: "form-control"  %>
   </div>
   <div class="field">
     <%= f.label :product_desc %><br>
-    <%= f.text_field :product_desc %>
+    <%= f.text_field :product_desc, class: "form-control"  %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<%= link_to 'Back', admin_products_path %>
+  </div>
+  </div>
