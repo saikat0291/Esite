@@ -24,7 +24,7 @@
                 <li>
                 <% if user_signed_in? %>
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-lock" href="/home"></i> Log Out
+                <i class="fa fa-lock" href="/home">Log Out</i> 
                 <% end %> 
                 <% else %>
                 <%= link_to new_user_session_path do %>
