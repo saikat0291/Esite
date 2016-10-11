@@ -24,11 +24,11 @@
                 <li>
                 <% if user_signed_in? %>
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-lock"></i> Log Out
+                <i class="fa fa-lock">Log Out</i> 
                 <% end %> 
                 <% else %>
                 <%= link_to new_user_session_path do %>
-                <i class="fa fa-lock"></i> Login
+                <i class="fa fa-lock">Login</i> 
                 <% end %>
                 <% end %> 
                 </li>
