@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/cart/clearDelQtyById/:product_id' => 'cart#clearDelQtyById'
   get '/contact' => 'esite_controllers#contact'
   get '/home' => 'esite_controllers#index'
+  get '/users/sign_out' => 'esite_controllers#index'
   get '/error' => 'esite_controllers#E404'
   get '/blog' => 'esite_controllers#blog'
   get '/checkout' => 'cart#checkout'
