@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/error' => 'esite_controllers#E404'
   get '/blog' => 'esite_controllers#blog'
   get '/checkout' => 'cart#checkout'
+  post '/checkout' => 'cart#checkout'
   get "productsDesc/category/:category_id" => 'product#index'
   get "productsDesc/subcategory/:subcat_id/category/:category_id" => 'product#index'
   get "productsDesc/subcategory/:subcat_id/category/:category_id/cart/:product_id" => 'product#add'

@@ -69,14 +69,28 @@ class CartController < ApplicationController
 	def checkout
 		if session[:cart] then
 			@cart = session[:cart]
-			#@sessionId=session[:session_id]
-			@cart_id=current_user.id	
-				@cart.each do |product_id ,quantity |
-					if(product_id.length>0) then 
-							product =Admin::Product.find(product_id) 
-							EProducttempDtl.create(:product_id => product_id, :price => product.price,:quantity => quantity,:user_name => current_user.email,:cart_id => @cart_id,:offer_id => product.offerId)
-					end	
-				end
+			@cart_id=session[:session_id]
+			@user_id=current_user.id	
+			@tempProdList=EProducttempDtl.all.where(userId: @user_id)
+			if(@tempProdList.size>0 && params[:commit]!='' &&  params[:conFirm]!='Y' && params[:conFirm]!='I') then 
+				redirect_to :action => :index ,:conFirm => 'I' 
+			else 	
+				if(params[:commit]=='No') then 
+					EProducttempDtl.destroy_all(userId: @user_id)
+				end	
+					@cart.each do |product_id ,quantity |
+						if(product_id.length>0) then 
+								product =Admin::Product.find(product_id) 
+								EProducttempDtl.create(:product_id => product_id, :price => product.price,:quantity => quantity,:user_name => current_user.email,:cart_id => @cart_id,:offer_id => product.offerId,:userId => @user_id)
+						end	
+					end
+					if(params[:commit]=='Yes') then 
+						EProducttempDtl.where(:userId => @user_id).update_all(:cart_id => @cart_id)
+					end
+				@updatedProdList=EProducttempDtl.all.where(userId: @user_id)	
+				params[:commit]={}
+				params[:conFirm]=""
+			end	
 		else
 			@cart = {}
 		end

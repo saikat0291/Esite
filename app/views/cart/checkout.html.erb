@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	 <script type="text/javascript">
-    	function handleClick(cb){
-    		alert("delete_cart");
-    		//if(is_Direction==true){
-    			//window.location.href="/productsDesc/"+productType+"/"+prodId;
-    	}
-    </script>
 </head>
 <body>
 	<header id="header"><!--header-->
@@ -144,19 +137,7 @@
 			</div><!--/breadcrums-->
 			<div class="shopper-informations">
 				<div class="row">
-					<div class="col-sm-3">
-						<div class="shopper-info">
-							<p>Shopper Information</p>
-							<form>
-								<input type="text" placeholder="Display Name">
-								<input type="text" placeholder="User Name">
-								<input type="password" placeholder="Password">
-								<input type="password" placeholder="Confirm password">
-							</form>
-							<a class="btn btn-primary" href="">Get Quotes</a>
-							<a class="btn btn-primary" href="">Continue</a>
-						</div>
-					</div>
+					
 					<div class="col-sm-5 clearfix">
 						<div class="bill-to">
 							<p>Bill To</p>
@@ -204,14 +185,12 @@
 								</form>
 							</div>
 						</div>
+						<div >
+						<a class="btn btn-primary" href="">Get Quotes</a>
+							<a class="btn btn-primary" href="">Continue</a>
+						
 					</div>
-					<div class="col-sm-4">
-						<div class="order-message">
-							<p>Shipping Order</p>
-							<textarea name="message"  placeholder="Notes about your order, Special Notes for Delivery" rows="16"></textarea>
-							<label><input type="checkbox"> Shipping to bill address</label>
-						</div>	
-					</div>					
+					</div>				
 				</div>
 			</div>
 			<div class="review-payment">
@@ -232,16 +211,16 @@
 					</thead>
 					<tbody>
 						<% total=0 %>
-						<% @cart.each do |product_id ,quantity | %>
-							<% if(product_id.length>0) then %>
-							<% product =Admin::Product.find(product_id) %>
+						<% @updatedProdList.each do |product| %>
+						<% product_id=product.product_id %>
+						<% quantity= product.quantity %>
+						<% currentProduct =Admin::Product.find(product.product_id) %>
 						<tr>
 							<td class="cart_product">
-
-								<a href=""><%= image_tag("upload/"+product.product_image) %></a>
+								<a href=""><%= image_tag("upload/"+currentProduct.product_image) %></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href=""><%= link_to product.product_name, product %></a></h4>
+								<h4><a href=""><%= link_to currentProduct.product_name, currentProduct %></a></h4>
 								<p>Web ID: 1089772</p>
 							</td>
 							<td class="cart_price">
@@ -249,19 +228,19 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<input class="cart_quantity_input" type="text" name="quantity" value="<%= quantity %>" disabled="true" autocomplete="off" size="2">
+									<input class="cart_quantity_input" type="text" name="quantity" value="<%= product.quantity %>" disabled="true" autocomplete="off" size="2">
 								</div>
 							</td>
 							<td class="cart_total">
-									<% total+= quantity * product.price %>
+									<% total+= product.quantity * product.price %>
 									<%if quantity == 0%>
-										<a href="/cart/clearcartById/<%=product_id%>"></a>
+										<a href="/cart/clearcartById/<%=product.product_id%>"></a>
 									<% end %>
-								<p class="cart_total_price"><%= quantity * product.price %></p>
+								<p class="cart_total_price"><%= product.quantity * product.price %></p>
 							</td>
-						</tr>
+						</tr>						
 						<% end %>
-						<% end %>
+						
 						<% if @cart.empty? %>
 						<tr><td><h2 style="text-align: center;color: red">Your cart is currently empty. Please </h2></td></tr>
 						<% end %>
@@ -296,7 +275,7 @@
 			</div>
 			<div class="payment-options">
 					<span>
-						<label><input type='checkbox' onclick='handleClick(this)'> Direct Bank Transfer</label>
+						<label><input type='checkbox' id="search-submit"> Direct Bank Transfer</label>
 					</span>
 					<span>
 						<label><input type="checkbox">David card banking</label>
@@ -304,7 +283,7 @@
 					<span>
 						<label><input type="checkbox">Credit card banking</label>
 					</span>
-				</div>
+			</div>
 		</div>
 	</section> <!--/#cart_items-->
 
