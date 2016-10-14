@@ -62,7 +62,36 @@ $( document ).ready(function() {
 		
 	});
 });
-
+function Visacreditcard()  
+    {  
+      var inputext=document.getElementById("Cradit-card").value;
+      alert(inputext);
+      var cardno =/^(?:4[0-9]{12}(?:[0-9]{3})?)$/;  
+      if(inputext.match(cardno))  
+            {  
+          alert("ok");
+            }  
+          else  
+            {  
+            alert("Not a valid cradit number!");  
+            return false;  
+            }  
+    }  
+ function MasterCard()  
+    {  
+      var inputext=document.getElementById("card-number").value;
+      alert(inputext);
+      var cardno =/^(?:5[1-5][0-9]{14})$/;  
+      if(inputext.match(cardno))  
+            {  
+          alert("ok");
+            }  
+          else  
+            {  
+            alert("Not a valid Mastercard number!");  
+            return false;  
+            }  
+    } 
 </script>
 </head>
 <body>
@@ -381,7 +410,10 @@ $( document ).ready(function() {
 				</label>
 			</span>
 			<span>
-				<label><input type="submit" name="proccess" value="Go" /></label>
+				<label>Card Number:<input type='text' id="Cradit-card" /></label>
+			</span>
+			<span>
+				<label><input type="submit" name="proccess" value="Go" onclick="Visacreditcard();"/></label>
 			</span>
 			</div>
 			<div id='card-details' style="display: none;">
@@ -398,7 +430,7 @@ $( document ).ready(function() {
 				<label>Card Number:<input type='text' id="card-number" /></label>
 			</span>
 			<span>
-				<label><input type="submit" name="proccess" value="Go" /></label>
+				<label><input type="submit" name="proccess" value="Go" onclick="MasterCard();"/></label>
 			</span>
 			</div>
 		</div>

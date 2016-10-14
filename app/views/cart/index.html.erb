@@ -584,13 +584,13 @@
 <%= hidden_field_tag "conFirm", 'Y' %>
 <script type="text/javascript">
     	
-    var lightBox = $('#lightbox'),
-    lightBoxContent = $('#lb-content');
+    var lightBox = $('#lightbox');
+    var lightBoxContent = $('#lb-content');
 
 var positionLightbox = function() {
-    var veiwWidth = $(window).width(),
-        lbContentMargin = (veiwWidth / 2) - 148,
-        lbContent = $('#lb-content');
+    var veiwWidth = $(window).width();
+        var lbContentMargin = (veiwWidth / 2) - 148;
+        var lbContent = $('#lb-content');
 
     lbContent.css({
         'left' : lbContentMargin,

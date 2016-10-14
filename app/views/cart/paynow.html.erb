@@ -62,13 +62,29 @@ $( document ).ready(function() {
 		
 	});
 });
-    function cardnumber()  
+	function Visacreditcard()  
     {  
-      var inputext=$("#card-number")
-      var cardno =(?:5[1-5][0-9]{2}  ;  
-      if(inputext==(cardno))  
+      var inputext=document.getElementById("Cradit-card").value;
+      alert(inputext);
+      var cardno =/^(?:4[0-9]{12}(?:[0-9]{3})?)$/;  
+      if(inputext.match(cardno))  
             {  
-          return true;  
+          alert("ok");
+            }  
+          else  
+            {  
+            alert("Not a valid cradit number!");  
+            return false;  
+            }  
+    }  
+    function MasterCard()  
+    {  
+      var inputext=document.getElementById("master-number").value;
+      alert(inputext);
+      var cardno =/^(?:5[1-5][0-9]{14})$/;  
+      if(inputext.match(cardno))  
+            {  
+          alert("ok");
             }  
           else  
             {  
@@ -370,7 +386,7 @@ $( document ).ready(function() {
 			</div>
 			<div class="payment-options" style="display: none;">
 					<span>
-						<label><input type='radio' name="PaymentType" class="amountpay" value="1" /> Net Banking </label>
+						<label><input type='radio' name="PaymentType" class="amountpay" value="1" /> Visa credit card</label>
 					</span>
 					<span>
 						<label><input type="radio" name="PaymentType" class="amountpay" value="2">David card banking</label>
@@ -390,7 +406,10 @@ $( document ).ready(function() {
 				</label>
 			</span>
 			<span>
-				<label><input type="submit" name="proccess" value="Go" /></label>
+				<label>Card Number:<input type='text' id="Cradit-card" /></label>
+			</span>
+			<span>
+				<label><input type="submit" name="proccess" value="Go" onclick="Visacreditcard();"/></label>
 			</span>
 			</div>
 			<div id='card-details' style="display: none;">
@@ -404,10 +423,10 @@ $( document ).ready(function() {
 				</label>
 			</span>
 			<span>
-				<label>Card Number:<input type='text' id="card-number" /></label>
+				<label>Card Number:<input type='text' id="master-number" /></label>
 			</span>
 			<span>
-				<label><input type="submit" name="proccess" value="Go" onclick="cardnumber();"/></label>
+				<label><input type="submit" name="proccess" value="Go" onclick="MasterCard();"/></label>
 			</span>
 			</div>
 		</div>
