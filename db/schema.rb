@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012172038) do
+ActiveRecord::Schema.define(version: 20161014044629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,17 +33,34 @@ ActiveRecord::Schema.define(version: 20161012172038) do
   end
 
   create_table "bill_tos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "email"
-    t.string   "firstname"
+    t.integer  "user_id",                 null: false
+    t.string   "email",      default: "", null: false
+    t.string   "firstname",  default: "", null: false
     t.string   "middlename"
-    t.string   "lastname"
-    t.string   "address1"
+    t.string   "lastname",   default: "", null: false
+    t.string   "address1",   default: "", null: false
     t.string   "address2"
-    t.integer  "pin"
-    t.string   "country"
-    t.string   "state"
-    t.integer  "phone"
+    t.integer  "pin",                     null: false
+    t.string   "country",    default: "", null: false
+    t.string   "state",      default: "", null: false
+    t.integer  "phone",                   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "e_address_mstrs", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.string   "email",      null: false
+    t.string   "firstname",  null: false
+    t.string   "middlename"
+    t.string   "lastname",   null: false
+    t.string   "address1",   null: false
+    t.string   "address2"
+    t.string   "pin",        null: false
+    t.string   "country",    null: false
+    t.string   "state",      null: false
+    t.string   "phone",      null: false
+    t.string   "status",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

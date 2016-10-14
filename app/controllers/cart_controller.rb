@@ -71,7 +71,9 @@ class CartController < ApplicationController
 			@cart = session[:cart]
 			@cart_id=session[:session_id]
 			@user_id=current_user.id	
+			@addressList=EAddressMstr.all.where(user_id: @user_id).where(status: 'Y')
 			@tempProdList=EProducttempDtl.all.where(userId: @user_id)
+			@billdetails = EAddressMstr.new 
 			if(@tempProdList.size>0 && params[:commit]!='' &&  params[:conFirm]!='Y' && params[:conFirm]!='I') then 
 				redirect_to :action => :index ,:conFirm => 'I' 
 			else 	
@@ -95,7 +97,31 @@ class CartController < ApplicationController
 			@cart = {}
 		end
 	end
-	
+	def paynow
+		@user_id=current_user.id
+		@addressList=EAddressMstr.all.where(user_id: @user_id)
+		@updatedProdList=EProducttempDtl.all.where(userId: @user_id)
+		if session[:cart] then
+			@cart = session[:cart]
+			@cart_id=session[:session_id]
+			@user_id=current_user.id	
+			@addressList=EAddressMstr.all.where(user_id: @user_id).where(status: 'Y')
+			@tempProdList=EProducttempDtl.all.where(userId: @user_id)
+			@billdetails = EAddressMstr.new 
+			@updatedProdList=EProducttempDtl.all.where(userId: @user_id)
+			session[:cart]={}	
+		else
+			@cart = {}
+		end
+	end 
+
+	def deladdressById
+		id = params['addressid']
+		@searchaddress=EAddressMstr.find(id)
+		@searchaddress.update(:status => 'N')
+		redirect_to '/paynow'
+	end
+
 	def index
 		#if there is a cart , pass it to the page for display else pass an emoty value
 		@searched_products = Admin::Product.where(["upper(product_name) LIKE upper(?)","%#{params[:search]}%"])

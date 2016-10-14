@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
+
   root 'esite_controllers#index'
   devise_for :users
   #get 'cart/index'
   namespace :admin do
     resources :products
   end
-  #get 'product/index'
+  resources :bill_tos 
+  resources :e_address_mstrs
   get '/cart' => 'cart#index'
   get '/cart/clear' => 'cart#clearcart'
   get '/cart/:id' => 'cart#index'
   get '/cart/clearcartById/:product_id' => 'cart#clearcartById'
+  get '/cart/deladdressById/:addressid' => 'cart#deladdressById'
   get '/cart/clearAddQtyById/:product_id' => 'cart#clearAddQtyById'
   get '/cart/clearDelQtyById/:product_id' => 'cart#clearDelQtyById'
   get '/contact' => 'esite_controllers#contact'
@@ -19,6 +22,10 @@ Rails.application.routes.draw do
   get '/blog' => 'esite_controllers#blog'
   get '/checkout' => 'cart#checkout'
   post '/checkout' => 'cart#checkout'
+  post '/pay' => 'cart#checkout'
+  get '/pay' => 'cart#checkout'
+  get '/paynow' => 'cart#paynow'
+  get '/address' => 'cart#address' 
   get "productsDesc/category/:category_id" => 'product#index'
   get "productsDesc/subcategory/:subcat_id/category/:category_id" => 'product#index'
   get "productsDesc/subcategory/:subcat_id/category/:category_id/cart/:product_id" => 'product#add'
