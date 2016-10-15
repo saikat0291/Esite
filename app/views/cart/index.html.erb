@@ -1,35 +1,3 @@
-<!-- <h1>Your Cart</h1>
-<% if @cart.empty? %>
-	<p>Your cart is Currently Empty</p>
-<% else %>
-	<%= link_to"Empty Your cart", cart_clear_path %>
-<% end %>
-
-<br><br>
-<% total=0 %>
-<ul>
-	<% @cart.each do |product_id ,quantity | %>
-	<% if(product_id.length>0) then %>
-		<li>product_id is not empty :<%=product_id%></li>
-		<% product =Admin::Product.find(product_id) %>
-	<li>
-		<%= link_to product.product_name, product %>
-		<p><%= product.product_desc %></p>
-		<p><%= number_to_currency(product.price, :unit => "$") %></p>
-		<p>Quantity:<%= quantity %></p>
-		
-		
-		<p><%= link_to "Remove",  "/cart/clearcartById/"+product_id %> || <%= link_to "Add Quantity",  "/cart/clearAddQtyById/"+product_id %> || <%= link_to "Remove Quantity",  "/cart/clearDelQtyById/"+product_id %></p>
-		<!-- <p>product_id session :<%=session[:cart]%></p> -->
-<!--	</li>
-	<% total+= quantity * product.price %>
-	<% end %>
-	<% end %>
-<p><b>Total Amount:<%= number_to_currency(total, :unit => "$")%></b></p>
-</ul>
-<p><%= link_to "Home",  root_path %></p>
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

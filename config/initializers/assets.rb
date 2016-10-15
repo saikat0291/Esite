@@ -21,5 +21,5 @@ Rails.application.config.assets.precompile += %w( bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( prettyPhoto.css )
 Rails.application.config.assets.precompile += %w( price-range.css )
 Rails.application.config.assets.precompile += %w( animate.css )
-Rails.application.config.assets.precompile += %w( main.css )
+
 Rails.application.config.assets.precompile += %w( responsive.css )
