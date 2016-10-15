@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <script type="text/javascript">
-	function showAddressForm(){
+window.onload = function () {
+   function showAddressForm(){
 
 		if($("#newAddressId").text()=='New Shipping Address') {
 			$("#newAddressId").text("Close Form");
@@ -92,6 +93,7 @@ $( document ).ready(function() {
             return false;  
             }  
     }  
+};
 </script>
 </head>
 <body>
