@@ -549,9 +549,9 @@
 		
 	</footer><!--/Footer-->
 
+<%= hidden_field_tag "conFirm", 'Y' %>
 <script type="text/javascript">
-<% if params[:conFirm]=='I' then %>
-<%= hidden_field_tag "conFirm", 'Y' %>	
+    <% if params[:conFirm]=='I' then %>	
     var lightBox = $("#lightbox");
     var lightBoxContent = $('#lb-content');
 
@@ -579,8 +579,7 @@ $('#lb-close').click(function() {
     lightBox.hide();
     lightBoxContent.hide();
 });
-   <% end %>
     </script>
- 
+    <% end %>
 </body>
 </html>
