@@ -12,8 +12,8 @@
 		}
 		$(".adrssClass").toggle();
 	}
-	
-$( document ).ready(function() {
+	window.onload = function () {
+   $( document ).ready(function() {
 	$(".addressClass").each(function(index){
 		
 		if(this.checked){
@@ -62,7 +62,7 @@ $( document ).ready(function() {
 		
 	});
 });
-function Visacreditcard()  
+	function Visacreditcard()  
     {  
       var inputext=document.getElementById("Cradit-card").value;
       alert(inputext);
@@ -77,9 +77,9 @@ function Visacreditcard()
             return false;  
             }  
     }  
- function MasterCard()  
+    function MasterCard()  
     {  
-      var inputext=document.getElementById("card-number").value;
+      var inputext=document.getElementById("master-number").value;
       alert(inputext);
       var cardno =/^(?:5[1-5][0-9]{14})$/;  
       if(inputext.match(cardno))  
@@ -91,7 +91,9 @@ function Visacreditcard()
             alert("Not a valid Mastercard number!");  
             return false;  
             }  
-    } 
+    }  
+};
+
 </script>
 </head>
 <body>
