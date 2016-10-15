@@ -551,7 +551,7 @@
 <% if params[:conFirm]=='I' then %>
 <%= hidden_field_tag "conFirm", 'Y' %>
 <script type="text/javascript">
-    	
+    	window.onload = function () {
     var lightBox = $("#lightbox");
     var lightBoxContent = $('#lb-content');
 
@@ -579,6 +579,7 @@ $('#lb-close').click(function() {
     lightBox.hide();
     lightBoxContent.hide();
 });
+   
     </script>
     <% end %>
 </body>
